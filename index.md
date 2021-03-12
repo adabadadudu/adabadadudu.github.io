@@ -1,1 +1,4 @@
 
+```python
+def fullFuncInPy()->str;
+```
