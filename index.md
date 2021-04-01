@@ -13,3 +13,10 @@ why you don't learn C++ ? because C++ is harder than C
 1-**[Pashmak regex library](https://pooiaferdowsi.github.io/1)**
 
 2-**[I learn for C++](https://pooiaferdowsi.github.io/2)**
+
+
+
+*********************My Profile On GitHub & Email*********************
+
+emal : <pooia.ferdowsi.is.developer@gmail.com>
+github : https://github.com/PooiaFerdowsi
