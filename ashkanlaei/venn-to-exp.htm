@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>9th Mathematics - Collections - Venn to Expression</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				outline: 0;
+				background: unset;
+				color: inherit;
+				text-decoration: inherit;
+				font-family: 'fira code';
+			}
+			body {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: 100%;
+				height: 100vh;
+				background-color: midnightblue;
+				color: gold;
+			}
+			#venn {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.venn-child {
+				width: 30vh;
+				height: 30vh;
+				border-radius: 50%;
+				background-color: silver;
+				flex-shrink: 0;
+			}
+			.venn-child.active {
+				background-color: firebrick;
+			}
+			#center {
+				margin-left: -30vh;
+				background-color: gray;
+				clip-path: circle(15vh at 35vh);
+			}
+			#center.active {
+				background-color: maroon;
+			}
+			#right {
+				margin-left: calc(1px - 10vh);
+			}
+			#left::after, #right::after {
+				content: attr(data-set-name);
+				display: block;
+				text-align: center;
+				position: relative;
+				font-size: 18pt;
+				font-weight: bold;
+				top: -6vh;
+				text-shadow: 0 0 5px midnightblue;
+			}
+			#states {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				font-size: 28pt;
+				font-weight: bold;
+			}
+			#states li {
+				margin: 20px 0;
+			}
+			/* For small devices */
+			@media only screen and (max-width: 20cm) {
+				body {
+					grid-template-columns: 100%;
+					grid-template-rows: 1fr 1fr;
+				}
+				#states {
+					font-size: 14pt !important;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="venn">
+			<div class="venn-child" id="left" onclick="toggle(this, 0)" data-set-name="A"></div>
+			<div class="venn-child" id="center" onclick="toggle(this, 1)"></div>
+			<div class="venn-child" id="right" onclick="toggle(this, 2)" data-set-name="B"></div>
+		</div>
+		<ul id="states"></ul>
+		<script>
+			const states = {
+				'000': [ '{}', '&empty;' ],
+				'001': [ 'B - A', '(A &cup; B) - A', 'B - (A &cap; B)' ],
+				'010': [ 'A &cap; B', '(A &cup; B) - (A &Delta; B)' ],
+				'011': [ 'B' ],
+				'100': [ 'A - B', '(A &cup; B) - B', 'A - (A &cap; B)' ],
+				'101': [ 'A &Delta; B', '(A &cup; B) - (A &cap; B)', '(A - B) &cup; (B - A)' ],
+				'110': [ 'A' ],
+				'111': [ 'A &cup; B', '(A &Delta; B) &cup; (A &cap; B)', '(A - B) &cup; (A &cap; B) &cup; (B - A)' ]
+			}
+			let statesElement = document.getElementById('states')
+			let current = '000'
+			function toggle(elem, id) {
+				elem.classList.toggle('active')
+				current = current.substr(0, id) + (elem.classList.contains('active') ? 1 : 0) + current.substr(id + 1)
+				updateStates(states[current])
+			}
+			function updateStates(newStates) {
+				statesElement.innerHTML = newStates.map(s => `<li>${s}</li>`).join('')
+			}
+			updateStates(states[current])
+		</script>
+	</body>
+</html>
