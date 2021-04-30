@@ -1,5 +1,6 @@
 #div {
     display: inline;
+    background-color:blue;
     border-radius: 5px;
 }
 a#div {
