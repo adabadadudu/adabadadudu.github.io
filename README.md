@@ -1,5 +1,5 @@
 Title | Link
 ------ | --------
-index  |   [index](/index2x.htm)
+index  |   [index](/inde2x.htm)
 mememe | [me](/me.htm)
 
